@@ -1,0 +1,12 @@
+random_seed: 42
+data:
+  train_path: data/sample.csv
+  target: isFraud
+model:
+  type: sklearn.LogisticRegression
+  params:
+    max_iter: 1000
+    class_weight: balanced
+cv:
+  folds: 3
+metrics: [roc_auc, f1, precision, recall]

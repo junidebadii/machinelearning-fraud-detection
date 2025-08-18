@@ -1,0 +1,3 @@
+input_path: data/sample.csv
+output_path: artifacts/preds.csv
+model_path: artifacts/fraud_detection_pipeline.pkl

@@ -1,0 +1,56 @@
+[project]
+name = "fraud-detection-ml"
+version = "0.1.0"
+description = "Machine learning model for detecting fraudulent transactions in financial transactions"
+authors = [
+    {name = "Junid Ebadi",email = "junid.eb@hotmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.3.1",
+    "scikit-learn>=1.7.1",
+    "pydantic>=2.11.7",
+    "pyyaml>=6.0.2",
+    "streamlit>=1.48.1",
+    "joblib>=1.4.0",
+    "numpy (>=2.3.2,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [
+    {include = "src"},
+    {include = "app"}
+]
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+ruff = "^0.12.9"
+mypy = "^1.17.1"
+pytest = "^8.4.1"
+pytest-cov = "^6.2.1"
+nbstripout = "^0.8.1"
+pre-commit = "^4.3.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+fd-train = "src.fraud_detection.model:main"
+fd-predict = "src.fraud_detection.predict:main"
+fd-app = "app.streamlit_app:main"
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 100
+select = ["E","F","I"]
+fix = true
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+strict = false
